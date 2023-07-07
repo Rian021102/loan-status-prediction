@@ -65,7 +65,7 @@ def eda(X_train, y_train):
 
     #create function of countplot for bad_loan
     def countplot_bad_loan(col):
-        plt.figure(figsize=(20,10))
+        plt.figure(figsize=(25,15))
         sns.countplot(data=bad_loan,x=col, order=bad_loan[col].value_counts().index)
         plt.show()
 
@@ -107,12 +107,12 @@ def eda(X_train, y_train):
     bad_loan.hist(figsize=(20,20))
 
     #plot pairplot for bad_loan with figure size 20,20
-    plt.figure(figsize=(20,20))
+    plt.figure(figsize=(25,25))
     sns.pairplot(data=bad_loan)
     plt.show()
 
     #plot correlation heatmap for X_train
-    plt.figure(figsize=(20,20))
+    plt.figure(figsize=(25,25))
     sns.heatmap(X_train.corr(),annot=True)
     plt.show()
     
