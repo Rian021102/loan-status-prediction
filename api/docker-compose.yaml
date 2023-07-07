@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rian021102/loan-status-prediction-api
+    container_name: api_backend
+    ports:
+      - '8080:8080'
+    volumes:
+      - './api:/app/api'
