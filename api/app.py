@@ -19,7 +19,7 @@ class NumpyJSONEncoder(json.JSONEncoder):
 app = FastAPI()
 
 # Load the saved model
-model = joblib.load("/Users/rianrachmanto/pypro/project/loan-status-prediction/model/model.pkl")
+model = joblib.load("model.pkl")
 
 # Create a class that describes the input
 class LoanStatus(BaseModel):
