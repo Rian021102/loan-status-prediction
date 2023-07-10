@@ -57,12 +57,12 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh deploy_ec2 "if [ -e temp/ ]; then rm -rf temp/; fi"
-          ssh deploy_ec2 "rm -rf Smoker-Detection-Bio-Signs/"
+          ssh deploy_ec2 "rm -rf loan-status-prediction/"
           ssh deploy_ec2 "rm -rf ml_process_demo/"
           ssh deploy_ec2 "mkdir temp/"
           ssh deploy_ec2 "mkdir ml_process_demo/"
           ssh deploy_ec2 "git clone https://github.com/Rian021102/loan-status-prediction.git temp/"
           ssh deploy_ec2 "rsync -a ./temp/ ./ml_process_demo/"
           ssh deploy_ec2 "rm -rf temp/"
-          ssh deploy_ec2 "cd ml_process_demo/ || sudo docker rmi rian021102/smoker-detection-api"
-          ssh deploy_ec2 "cd ml_process_demo/API && sudo docker-compose pull && sudo docker-compose up -d"
+          ssh deploy_ec2 "cd ml_process_demo/ || sudo docker rmi rian021102/loan-status-prediction-api"
+          ssh deploy_ec2 "cd ml_process_demo/api && sudo docker-compose pull && sudo docker-compose up -d"
