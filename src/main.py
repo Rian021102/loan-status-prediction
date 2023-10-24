@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from feateng import process_train, process_test
 from xtremegradientboost import xgb_model
+from lrmodel import lr_model
 def main():
     # Load the data
     path='/Users/rianrachmanto/pypro/data/loan_final313.csv'
@@ -11,7 +12,7 @@ def main():
     print('Data loaded')
 
     # Explore the data
-    eda_train=new_eda(X_train, y_train)
+    #eda_train=new_eda(X_train, y_train)
     X_train,y_train=clean_train(X_train,y_train)
     X_test,y_test=clean_test(X_test,y_test)
     print('Data cleaned')
@@ -101,7 +102,15 @@ def main():
     X_train_res,y_train_res=process_train(X_train,y_train)
     X_test_res,y_test_res=process_test(X_test,y_test)
 
-    model=xgb_model(X_train_res,y_train_res,X_test_res,y_test_res)    
+    X_train_res=X_train_res[['interest_rate','grade','total_rec_prncp',
+                             'interest_payments']]
+    
+    X_test_res=X_test_res[['interest_rate','grade','total_rec_prncp',
+                             'interest_payments']]
+
+    model_lr=lr_model(X_train_res,y_train_res,X_test_res,y_test_res)
+
+    model_xgb=xgb_model(X_train_res,y_train_res,X_test_res,y_test_res)    
 
     
     
